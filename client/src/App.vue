@@ -1,5 +1,4 @@
 <script setup>
-import Canvas from "./components/Canvas.vue";
 import { onMounted } from "vue";
 
 async function establishConnection() {
@@ -16,10 +15,15 @@ onMounted(establishConnection);
 </script>
 
 <template>
-  <main>
-    <!-- welcome page, imported from router.js -->
-    <router-view />
-  </main>
+  <router-view></router-view>
 </template>
 
-<style scoped></style>
+<script>
+export default {
+  name: "App"
+};
+</script>
+
+<style scoped>
+
+</style>
