@@ -1,23 +1,10 @@
-@import "./base.css";
+@import url('https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
-.welcome {
-  display: flex;
+body {
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  font-family: 'SN Pro';
+  background-color: rgb(198, 198, 255);
 }
 
-.main-heading {
-  display: flex;
-  justify-content: center;
-}
-
-.welcome-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.avatar {
-  border-radius: 100%;
-  border: black 1px;
-}
