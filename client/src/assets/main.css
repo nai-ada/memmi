@@ -1,23 +1,23 @@
-@import './base.css';
+@import "./base.css";
 
 .welcome {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-heading {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .welcome-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .avatar {
-    border-radius: 100%;
-    border: black 1px;
+  border-radius: 100%;
+  border: black 1px;
 }

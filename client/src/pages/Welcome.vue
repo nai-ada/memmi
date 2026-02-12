@@ -1,3 +1,18 @@
+<!-- Composition API method (recommended) -->
+<script setup>
+  import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
+
+  const router = useRouter()
+  const userName = ref("")
+  const userAvatar = ref("")
+
+  const goToWorkspace = () => {
+    console.log(userName.value, userAvatar.value)
+    router.push("/workspace")
+  }
+</script>
+
 <template>
   <div class="welcome">
     <div class="main-heading">
@@ -19,7 +34,8 @@
   </div>
 </template>
 
-<script>
+<!-- using Options API method -->
+<!-- <script>
 export default {
   name: "Welcome",
    data() {
@@ -35,7 +51,6 @@ export default {
     }
   }
 };
-
-</script>
+</script> -->
 
 <style scoped></style>
