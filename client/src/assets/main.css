@@ -1,7 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
-body {
-  font-family: "SN Pro";
-  background-color: rgb(48, 48, 88);
-  color: white;
+/* html {
+  display: block;
+  height: auto;
 }
+
+body {
+  font-family: "SN Pro", sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(to top, #8295ff, #fff48f);
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+} */
