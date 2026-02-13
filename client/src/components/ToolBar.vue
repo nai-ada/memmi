@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div>canvas</div>
+  <div>tools</div>
 </template>
 
 <style scoped></style>

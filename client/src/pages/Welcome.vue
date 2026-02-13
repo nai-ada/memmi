@@ -2,10 +2,13 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { onMounted } from "vue";
+import { useUserStore } from "@/stores/user";
 
 const router = useRouter();
+const userStore = useUserStore();
 const userName = ref("");
 const userAvatar = ref("");
+
 const avatarOptions = import.meta.glob("@/assets/images/avatars/*.png", {
   eager: true,
   import: "default",
@@ -17,9 +20,10 @@ function getRandomAvatar() {
   userAvatar.value = avatars.value[randomIndex];
 }
 
-const goToWorkspacePage = () => {
-  console.log(userName.value, userAvatar.value);
-  router.push("/workspace");
+const goToLobbyPage = () => {
+  userStore.userName = userName.value;
+  userStore.userAvatar = userAvatar.value;
+  router.push({ name: "Lobby" });
 };
 
 onMounted(() => {
@@ -42,7 +46,7 @@ onMounted(() => {
         <button class="randomize" @click="getRandomAvatar">↻</button>
         <label for="name" hidden>Enter Name</label>
         <input type="text" v-model="userName" id="name" name="name" />
-        <button type="submit" @click="goToWorkspacePage">Enter</button>
+        <button type="submit" @click="goToLobbyPage">Enter</button>
       </main>
     </div>
   </div>

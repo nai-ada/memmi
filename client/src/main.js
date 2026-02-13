@@ -1,11 +1,15 @@
 import "./assets/main.css";
 
 import { createApp } from "vue";
-import App from "./App.vue";
 import { createRouter, createWebHistory } from "vue-router";
+import { createPinia } from "pinia";
+import App from "./App.vue";
 
 import Welcome from "./pages/Welcome.vue";
-import Workspace from "./pages/Workspace.vue";
+import Lobby from "./pages/Lobby.vue";
+
+const app = createApp(App);
+const pinia = createPinia();
 
 const router = createRouter({
   history: createWebHistory(),
@@ -16,11 +20,14 @@ const router = createRouter({
       name: "Welcome",
     },
     {
-      path: "/workspace",
-      component: Workspace,
-      name: "Workspace",
+      path: "/lobby",
+      component: Lobby,
+      name: "Lobby",
+      props: true,
     },
   ],
 });
 
-createApp(App).use(router).mount("#app");
+app.use(pinia);
+app.use(router);
+app.mount("#app");
