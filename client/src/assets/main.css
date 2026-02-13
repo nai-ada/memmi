@@ -1,10 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
 body {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  font-family: 'SN Pro';
-  background-color: rgb(198, 198, 255);
+  font-family: "SN Pro";
+  background-color: rgb(48, 48, 88);
+  color: white;
 }
-
