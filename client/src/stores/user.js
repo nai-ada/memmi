@@ -5,4 +5,5 @@ export const useUserStore = defineStore("user", {
     userName: "",
     userAvatar: "",
   }),
+  persist: true,
 });
