@@ -14,14 +14,39 @@ const io = new Server(httpServer, {
   },
 });
 
+function generateRoomId() {
+  return Math.floor(Math.random() * 10000);
+}
+
 app.use(cors());
 
 io.on("connection", (socket) => {
+  const roomId = generateRoomId();
+
   socket.emit("Socket.io", "connected");
   console.log("Socket.io connection established");
 
+  socket.on("createRoom", () => {
+    socket.join(`Room:${roomId}`);
+    socket.emit("roomCreated", roomId);
+    console.log(`Room ${roomId} created`);
+  });
+
+  socket.on("joinRoom", (roomId) => {
+    socket.join(`Room:${roomId}`);
+    socket.emit("roomJoined", roomId);
+    socket.to(`Room:${roomId}`).emit("userJoined", socket.id);
+    console.log(`User joined room ${roomId}`);
+  });
+
   socket.on("message", (data) => {
     console.log("Recieved from client:", data.message);
+    const rooms = Array.from(socket.rooms);
+    rooms.forEach((room) => {
+      if (room !== socket.id) {
+        io.to(room).emit("message", data);
+      }
+    });
   });
 });
 

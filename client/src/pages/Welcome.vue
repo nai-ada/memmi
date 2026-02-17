@@ -1,14 +1,15 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { onMounted } from "vue";
 import { useUserStore } from "@/stores/user";
+import { socket } from "@/socket";
 
 const router = useRouter();
 const userStore = useUserStore();
 const userName = ref("");
 const userAvatar = ref("");
 
+// avatars by https://www.flaticon.com/authors/creartive
 const avatarOptions = import.meta.glob("@/assets/images/avatars/*.png", {
   eager: true,
   import: "default",
@@ -23,11 +24,19 @@ function getRandomAvatar() {
 const goToLobbyPage = () => {
   userStore.userName = userName.value;
   userStore.userAvatar = userAvatar.value;
-  router.push({ name: "Lobby" });
+
+  socket.emit("createRoom");
 };
 
 onMounted(() => {
   getRandomAvatar();
+
+  socket.on("roomCreated", (roomId) => {
+    router.push({
+      name: "Lobby",
+      query: { room: roomId },
+    });
+  });
 });
 </script>
 

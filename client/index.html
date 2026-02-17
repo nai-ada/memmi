@@ -12,17 +12,6 @@
       integrity="sha384-kzavj5fiMwLKzzD1f8S7TeoVIEi7uKHvbTA3ueZkrzYq75pNQUiUi6Dy98Q3fxb0"
       crossorigin="anonymous"
     ></script>
-    <script>
-      const socket = io("http://localhost:3000");
-
-      socket.on("Socket.io", (data) => {
-        console.log("Received from server:", data);
-      });
-
-      socket.emit("message", {
-        message: "Hello from client",
-      });
-    </script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

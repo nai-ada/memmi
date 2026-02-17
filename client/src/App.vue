@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted } from "vue";
 
-// check backend connection to frontend
 async function establishConnection() {
   try {
     const response = await fetch("http://localhost:3000/connect");
@@ -19,6 +18,4 @@ onMounted(establishConnection);
   <router-view></router-view>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
