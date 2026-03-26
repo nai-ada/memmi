@@ -1,12 +1,28 @@
 <script setup>
 import { useUserStore } from "@/stores/user";
+import { ref, onMounted } from "vue";
+import { useRoute } from "vue-router";
+import { socket } from "@/socket";
 
 const userStore = useUserStore();
+const route = useRoute();
+const roomId = ref(route.query.room);
+
+onMounted(() => {
+  if (roomId.value) {
+    socket.emit("joinRoom", roomId.value);
+    console.log(`Joined room: ${roomId.value}`);
+    console.log(`Share: ${window.location.href}`);
+  }
+});
 </script>
 
 <template>
   <div class="wrapper">
+    <h1>Room {{ roomId }}</h1>
+    <p>Share this link with friends!</p>
     <div class="user-wrapper">
+
       <img :src="userStore.userAvatar" />
       <span>{{ userStore.userName }}</span>
     </div>
@@ -15,8 +31,8 @@ const userStore = useUserStore();
 
 <style scoped>
 .wrapper {
-  padding: 6px;
-  border: 1px solid black;
+  padding: 10px;
+  background: orange;
 }
 
 .user-wrapper {

@@ -1,30 +1,41 @@
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
-import { socket } from "@/socket";
-
 import Canvas from "@/components/Canvas.vue";
 import ToolBar from "@/components/ToolBar.vue";
 import InfoBar from "@/components/InfoBar.vue";
-
-const route = useRoute();
-const roomId = ref(route.query.room);
-
-onMounted(() => {
-  if (roomId.value) {
-    socket.emit("joinRoom", roomId.value);
-    console.log(`Joined room: ${roomId.value}`);
-    console.log(`Share: ${window.location.href}`);
-  }
-});
 </script>
 
 <template>
-  <h1>Room {{ roomId }}</h1>
-  <p>Share this link with friends!</p>
   <InfoBar></InfoBar>
-  <ToolBar></ToolBar>
-  <Canvas></Canvas>
+
+  <div class="lobby-layout">
+    <aside class="toolbar">
+      <ToolBar></ToolBar>
+    </aside>
+
+    <main class="canvas-area">
+      <Canvas></Canvas>
+    </main>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.lobby-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.toolbar {
+  width: 200px;
+  flex-shrink: 0;
+  height: 100%;
+  overflow-y: auto;
+  border-right: 1px solid #e0e0e0;
+}
+
+.canvas-area {
+  position: relative;
+  overflow: hidden;
+}
+</style>
